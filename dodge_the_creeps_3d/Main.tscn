@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 19, 1, 20 )
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 40, 40 )
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 8, 0, -17, 0, 0, 0, 0, 0, 0, -8, 0, -17, 0, 0, 0, 0, 0, 0, -8, 0, 16, 0, 0, 0, 0, 0, 0, 8, 0, 16, 0, 0, 0, 0, 0, 0, 8, 0, -17 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="CylinderMesh" id=8]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+mob_scene = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20.3301, 1.0359 )
+projection = 1
+size = 21.05
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.5, -0.68618, 0.528354, 0, 0.61009, 0.792332, -0.866025, -0.396166, 0.305045, 0, 12.5592, 14.7757 )
+shadow_enabled = true
+
+[node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 2147483648
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 7 )
+
+[node name="GroundPlane" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MobPath" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+curve = SubResource( 3 )
+
+[node name="MobSpawnLocation" type="PathFollow" parent="MobPath"]
+transform = Transform( -0.445953, 0, -0.895056, 0, 1, 0, 0.895056, 0, -0.445953, -7, 0, -1.98848 )
+offset = 26.9729
+rotation_mode = 1
+cubic_interp = false
+loop = false
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Capsules" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Capsules"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -15 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Capsules"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 14 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Capsules"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Capsules"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
+mesh = SubResource( 8 )
+material/0 = null
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
