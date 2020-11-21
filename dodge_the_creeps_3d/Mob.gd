@@ -23,7 +23,7 @@ func initialize(start_position, player_position):
 	$CollisionShape.disabled = false
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	move_and_slide(velocity)
 
 

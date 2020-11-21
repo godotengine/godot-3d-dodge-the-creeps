@@ -22,5 +22,5 @@ func _on_MobTimer_timeout():
 	mob.initialize(mob_spawn_location.translation, player_position)
 
 
-func _on_Player_hit() -> void:
+func _on_Player_hit():
 	$MobTimer.stop()

@@ -71,5 +71,5 @@ func die():
 	queue_free()
 
 
-func _on_MobDetector_body_entered(body: Node) -> void:
+func _on_MobDetector_body_entered(body):
 	die()
