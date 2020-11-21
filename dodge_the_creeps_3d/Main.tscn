@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://default_env.tres" type="Environment" id=4]
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://ScoreLabel.gd" type="Script" id=6]
+[ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 19, 1, 20 )
@@ -60,7 +62,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( 0.0939617, 0, 0.995576, 0, 1, 0, -0.995576, 0, 0.0939617, -12, 0, -11.9198 )
+transform = Transform( 0.568495, 0, 0.822687, 0, 1, 0, -0.822687, 0, 0.568495, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
@@ -94,5 +96,40 @@ material/0 = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+margin_left = 20.0226
+margin_top = 16.0181
+margin_right = 126.023
+margin_bottom = 71.0181
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.2, 0.184314, 0.215686, 1 )
+text = "Score: 0"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.447059 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Retry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+text = "Press Enter to retry"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]

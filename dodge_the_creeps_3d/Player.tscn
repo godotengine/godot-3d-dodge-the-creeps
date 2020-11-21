@@ -3,7 +3,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://art/player.glb" type="PackedScene" id=2]
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=1]
 radius = 0.792278
 
 [sub_resource type="Animation" id=2]
@@ -35,7 +35,7 @@ tracks/1/keys = {
 "values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
 }
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape" id=3]
 radius = 0.907607
 height = 0.1438
 
@@ -53,7 +53,7 @@ transform = Transform( 1, 0, 0, 0, 0.987214, 0.1594, 0, -0.1594, 0.987214, 0, 0.
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.771765, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "float"
@@ -66,5 +66,5 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="MobDetector"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787254, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="MobDetector" to="." method="_on_MobDetector_body_entered"]
