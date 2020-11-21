@@ -1,38 +1,70 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Mob.gd" type="Script" id=1]
+[ext_resource path="res://art/mob.glb" type="PackedScene" id=2]
 
-[sub_resource type="PhysicsMaterial" id=4]
+[sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
+absorbent = true
 
-[sub_resource type="SphereMesh" id=1]
-radius = 0.7
-height = 1.4
+[sub_resource type="CylinderShape" id=2]
+radius = 1.01014
+height = 0.972968
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.992157, 0.356863, 0.356863, 1 )
-
-[sub_resource type="SphereShape" id=3]
-radius = 0.7
+[sub_resource type="Animation" id=3]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Character:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.22, 0.7, 1.18 ),
+"transitions": PoolRealArray( 0.435275, 2.21914, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.329753, 0 ), Vector3( 0, 0.660351, 0 ), Vector3( 0, 0.349734, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.46, 1.18 ),
+"transitions": PoolRealArray( 0.482968, 0.535887, 1 ),
+"update": 0,
+"values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
+}
 
 [node name="Mob" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0114588, 0 )
 collision_layer = 2
-collision_mask = 4
-physics_material_override = SubResource( 4 )
+collision_mask = 2147483653
+physics_material_override = SubResource( 1 )
+contacts_reported = 2
+contact_monitor = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource( 1 )
-min_speed = 7
-max_speed = 12
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690285, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Character" parent="Pivot" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.987214, 0.1594, 0, -0.1594, 0.987214, 0, 0.348069, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690285, 0 )
-shape = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468848, 0 )
+shape = SubResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062134, 0 )
 aabb = AABB( -1.20524, 0.251327, -1.23715, 2.41047, 1.09305, 2.4743 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
+anims/float = SubResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_Mob_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

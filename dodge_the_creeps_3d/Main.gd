@@ -2,27 +2,15 @@ extends Node
 
 export(PackedScene) var mob_scene
 
+
 func _ready():
 	randomize()
-	new_game()
-
-
-func game_over():
-	$MobTimer.stop()
-	$Music.stop()
-	$DeathSound.play()
-
-
-func new_game():
-	get_tree().call_group("mobs", "queue_free")
-	$Player.start()
-	$MobTimer.start()
 	$Music.play()
 
 
 func _on_MobTimer_timeout():
 	# Choose a random location on Path2D.
-	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
 	
 	# Create a Mob instance and add it to the scene.
 	var mob = mob_scene.instance()
