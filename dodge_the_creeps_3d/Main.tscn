@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=4]
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -59,7 +60,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( 0.622366, 0, -0.782727, 0, 1, 0, 0.782727, 0, 0.622366, -6.78719, 0, -15 )
+transform = Transform( 0.855585, 0, 0.517664, 0, 1, 0, -0.517664, 0, 0.855585, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
@@ -90,5 +91,8 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16 )
 mesh = SubResource( 4 )
 material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
