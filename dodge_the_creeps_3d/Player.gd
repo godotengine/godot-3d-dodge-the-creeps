@@ -45,22 +45,22 @@ func _physics_process(delta):
 	# the floor, walls, etc. when a collision happens the same frame.
 	velocity.y -= fall_acceleration * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
+
 	# This makes the character follow a nice arc when jumping
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
-	
+
 	# Here, we check if we landed on top of a mob and if so, we kill it and bounce.
-	if get_slide_count() > 0:
-		# With move_and_slide(), Godot makes the body move sometimes multiple times in a row to
-		# smooth out the character's motion. So we have to loop over all collisions that may have
-		# happened.
-		for index in range(get_slide_count()):
-			var collision = get_slide_collision(index)
-			if collision.collider.is_in_group("mob"):
-				var mob = collision.collider
-				if Vector3.UP.dot(collision.normal) > 0.1:
-					mob.squash()
-					bounce()
+	# With move_and_slide(), Godot makes the body move sometimes multiple times in a row to
+	# smooth out the character's motion. So we have to loop over all collisions that may have
+	# happened.
+	# If there are no "slides" this frame, the loop below won't run.
+	for index in range(get_slide_count()):
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("mob"):
+			var mob = collision.collider
+			if Vector3.UP.dot(collision.normal) > 0.1:
+				mob.squash()
+				bounce()
 
 
 func bounce():
@@ -72,5 +72,5 @@ func die():
 	queue_free()
 
 
-func _on_MobDetector_body_entered(body):
+func _on_MobDetector_body_entered(_body):
 	die()

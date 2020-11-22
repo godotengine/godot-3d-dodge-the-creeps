@@ -62,7 +62,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( 0.568495, 0, 0.822687, 0, 1, 0, -0.822687, 0, 0.568495, -12, 0, -11.9198 )
+transform = Transform( -0.743626, 0, 0.668596, 0, 1, 0, -0.668596, 0, -0.743626, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false

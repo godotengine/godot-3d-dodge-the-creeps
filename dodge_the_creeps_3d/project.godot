@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Bump the Creeps (3D)"
+config/name="Squash the Creeps (3D)"
 config/description="In this game, your goal is to chase and kick out the creeps!
 
 This is a finished version of the game featured in the 'Your first 3D game'
