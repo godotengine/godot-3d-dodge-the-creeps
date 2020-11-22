@@ -62,7 +62,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( -0.757818, 0, -0.652466, 0, 1, 0, 0.652466, 0, -0.757818, -12, 0, -11.9198 )
+transform = Transform( 0.55069, 0, -0.83471, 0, 1, 0, 0.83471, 0, 0.55069, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
@@ -71,25 +71,25 @@ loop = false
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
-[node name="Capsules" type="Spatial" parent="."]
+[node name="Cylinders" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Capsules"]
+[node name="MeshInstance" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -15 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="MeshInstance3" type="MeshInstance" parent="Capsules"]
+[node name="MeshInstance3" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -15 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="Capsules"]
+[node name="MeshInstance2" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 16 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="Capsules"]
+[node name="MeshInstance4" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16 )
 mesh = SubResource( 4 )
 material/0 = null
