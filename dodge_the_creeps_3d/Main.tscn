@@ -9,10 +9,10 @@
 [ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 19, 1, 20 )
+extents = Vector3( 30, 1, 30 )
 
-[sub_resource type="PlaneMesh" id=2]
-size = Vector2( 60, 60 )
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 60, 2, 60 )
 
 [sub_resource type="Curve3D" id=3]
 _data = {
@@ -45,15 +45,15 @@ size = 19.0
 transform = Transform( 0.5, -0.777049, 0.382355, 0, 0.441506, 0.897258, -0.866025, -0.448629, 0.220753, 0, 12.5592, 14.7757 )
 shadow_enabled = true
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="Ground" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 collision_layer = 4
 collision_mask = 2147483648
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 1 )
 
-[node name="GroundPlane" type="MeshInstance" parent="StaticBody"]
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -62,7 +62,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( 0.55069, 0, -0.83471, 0, 1, 0, 0.83471, 0, 0.55069, -12, 0, -11.9198 )
+transform = Transform( 0.898021, 0, 0.439954, 0, 1, 0, -0.439954, 0, 0.898021, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
