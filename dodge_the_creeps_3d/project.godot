@@ -78,3 +78,4 @@ jump={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/filters/msaa=3
