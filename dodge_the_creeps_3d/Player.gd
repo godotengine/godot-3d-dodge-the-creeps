@@ -28,7 +28,7 @@ func _physics_process(delta):
 	if direction.length() > 0:
 		# In the lines below, we turn the character when moving and make the animation play faster.
 		direction = direction.normalized()
-		look_at(translation + direction, Vector3.UP)
+		$Pivot.look_at(translation + direction, Vector3.UP)
 		$AnimationPlayer.playback_speed = 4
 	else:
 		$AnimationPlayer.playback_speed = 1

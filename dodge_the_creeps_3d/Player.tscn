@@ -49,7 +49,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153214, 0, 0 )
 
 [node name="Character" parent="Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.987214, 0.1594, 0, -0.1594, 0.987214, 0, 0.348069, 0 )
+transform = Transform( 1, 0, 0, 0, 0.999168, -0.0407743, 0, 0.0407743, 0.999168, 0, 0.331418, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.771765, 0 )
