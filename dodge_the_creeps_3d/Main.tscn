@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -16,9 +16,12 @@ size = Vector3( 60, 2, 60 )
 
 [sub_resource type="CylinderMesh" id=3]
 
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.960784, 0.486275, 0.0313726, 1 )
+
 [sub_resource type="Curve3D" id=4]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 12, 0, -15, 0, 0, 0, 0, 0, 0, -12, 0, -15, 0, 0, 0, 0, 0, 0, -12, 0, 16, 0, 0, 0, 0, 0, 0, 12, 0, 16, 0, 0, 0, 0, 0, 0, 12, 0, -15 ),
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 14, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, -15 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
 }
 
@@ -57,31 +60,31 @@ size = 19.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -15 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 16 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="SpawnPath" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 4 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( 0.181657, 0, 0.983363, 0, 1, 0, -0.983363, 0, 0.181657, -12, 0, -11.9198 )
+transform = Transform( -0.424092, 0, -0.90562, 0, 1, 0, 0.90562, 0, -0.424092, -12, 0, -11.9198 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false

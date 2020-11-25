@@ -34,7 +34,9 @@ tracks/1/keys = {
 "values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
 }
 
-[node name="Mob" type="KinematicBody"]
+[node name="Mob" type="KinematicBody" groups=[
+"mob",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0114588, 0 )
 collision_layer = 2
 collision_mask = 2147483653
