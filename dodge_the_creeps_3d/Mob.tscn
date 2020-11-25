@@ -3,7 +3,7 @@
 [ext_resource path="res://Mob.gd" type="Script" id=1]
 [ext_resource path="res://art/mob.glb" type="PackedScene" id=2]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.679112, 0.544173, 1.10029 )
 
 [sub_resource type="Animation" id=2]
@@ -34,9 +34,7 @@ tracks/1/keys = {
 "values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
 }
 
-[node name="Mob" type="KinematicBody" groups=[
-"mob",
-]]
+[node name="Mob" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0114588, 0 )
 collision_layer = 2
 collision_mask = 2147483653
@@ -49,12 +47,12 @@ transform = Transform( 1, 0, 0, 0, 0.987214, 0.1594, 0, -0.1594, 0.987214, 0, 0.
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52793, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062134, 0 )
-aabb = AABB( -1.20524, 0.251327, -1.23715, 2.41047, 1.09305, 2.4743 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062134, 0.331645 )
+aabb = AABB( -1.19986, 0.251327, -1.57098, 2.41047, 1.09305, 3.17223 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "float"

@@ -9,7 +9,6 @@ export var min_speed = 10
 export var max_speed = 18
 
 var velocity = Vector3.ZERO
-var direction = Vector3.ZERO
 
 
 func _physics_process(_delta):
