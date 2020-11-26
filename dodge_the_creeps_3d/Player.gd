@@ -60,11 +60,7 @@ func _physics_process(delta):
 			var mob = collision.collider
 			if Vector3.UP.dot(collision.normal) > 0.1:
 				mob.squash()
-				bounce()
-
-
-func bounce():
-	velocity.y = bounce_impulse
+				velocity.y = bounce_impulse
 
 
 func die():
