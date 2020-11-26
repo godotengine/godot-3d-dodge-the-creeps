@@ -5,11 +5,11 @@ export (PackedScene) var mob_scene
 
 func _ready():
 	randomize()
-	$CanvasLayer/Retry.hide()
+	$UserInterface/Retry.hide()
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and $CanvasLayer/Retry.visible:
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
 		get_tree().reload_current_scene()
 
 
@@ -25,10 +25,10 @@ func _on_MobTimer_timeout():
 
 	add_child(mob)
 	# We connect the mob to the score label to update the score upon squashing a mob.
-	mob.connect("squashed", $CanvasLayer/ScoreLabel, "_on_Mob_squashed")
+	mob.connect("squashed", $UserInterface/ScoreLabel, "_on_Mob_squashed")
 	mob.initialize(mob_spawn_location.translation, player_position)
 
 
 func _on_Player_hit():
 	$MobTimer.stop()
-	$CanvasLayer/Retry.show()
+	$UserInterface/Retry.show()

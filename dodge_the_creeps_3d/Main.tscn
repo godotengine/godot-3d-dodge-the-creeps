@@ -83,7 +83,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 5 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( -0.884399, 0, 0.466731, 0, 1, 0, -0.466731, 0, -0.884399, -12.9746, 0, -14.9397 )
+transform = Transform( -0.480713, 0, -0.876877, 0, 1, 0, 0.876877, 0, -0.480713, -12.9746, 0, -14.9397 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
@@ -93,17 +93,19 @@ loop = false
 wait_time = 0.5
 autostart = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 4 )
+[node name="UserInterface" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
 margin_left = 20.0226
 margin_top = 16.0181
 margin_right = 126.023
 margin_bottom = 71.0181
-theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.2, 0.184314, 0.215686, 1 )
 text = "Score: 0"
 script = ExtResource( 6 )
@@ -111,7 +113,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Retry" type="ColorRect" parent="CanvasLayer"]
+[node name="Retry" type="ColorRect" parent="UserInterface"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.447059 )
@@ -119,10 +122,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Retry"]
+[node name="Label" type="Label" parent="UserInterface/Retry"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
 text = "Press Enter to retry"
 align = 1
 valign = 1
@@ -130,5 +132,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
