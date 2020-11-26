@@ -6,8 +6,11 @@
 [sub_resource type="SphereShape" id=1]
 radius = 0.792278
 
-[sub_resource type="Animation" id=2]
-resource_name = "float"
+[sub_resource type="CylinderShape" id=2]
+radius = 0.907607
+height = 0.1438
+
+[sub_resource type="Animation" id=3]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -35,10 +38,6 @@ tracks/1/keys = {
 "values": [ Vector3( -5.0326, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( -10, 0, 0 ) ]
 }
 
-[sub_resource type="CylinderShape" id=3]
-radius = 0.907607
-height = 0.1438
-
 [node name="Player" type="KinematicBody"]
 collision_mask = 2147483654
 script = ExtResource( 1 )
@@ -47,15 +46,11 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153214, 0, 0 )
 
 [node name="Character" parent="Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.999168, -0.0407743, 0, 0.0407743, 0.999168, 0, 0.331418, 0 )
+transform = Transform( 1, 0, 0, 0, 0.987214, 0.1594, 0, -0.1594, 0.987214, 0, 0.348069, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.771765, 0 )
 shape = SubResource( 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "float"
-anims/float = SubResource( 2 )
 
 [node name="MobDetector" type="Area" parent="."]
 monitorable = false
@@ -64,5 +59,9 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="MobDetector"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06491, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
+anims/float = SubResource( 3 )
 [connection signal="body_entered" from="MobDetector" to="." method="_on_MobDetector_body_entered"]

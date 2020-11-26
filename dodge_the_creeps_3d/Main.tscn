@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://default_env.tres" type="Environment" id=4]
-[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=6]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
@@ -84,7 +83,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 curve = SubResource( 5 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( -0.458285, 0, -0.888805, 0, 1, 0, 0.888805, 0, -0.458285, -12.9746, 0, -14.9397 )
+transform = Transform( -0.884399, 0, 0.466731, 0, 1, 0, -0.466731, 0, -0.884399, -12.9746, 0, -14.9397 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
@@ -93,9 +92,6 @@ loop = false
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 4 )
