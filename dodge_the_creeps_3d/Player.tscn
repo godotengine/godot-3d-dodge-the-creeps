@@ -39,10 +39,8 @@ tracks/1/keys = {
 radius = 0.907607
 height = 0.1438
 
-[node name="Player" type="KinematicBody" groups=[
-"player",
-]]
-collision_mask = 6
+[node name="Player" type="KinematicBody"]
+collision_mask = 2147483654
 script = ExtResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]

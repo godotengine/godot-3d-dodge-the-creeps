@@ -16,10 +16,10 @@ size = Vector3( 60, 2, 60 )
 
 [sub_resource type="CylinderMesh" id=3]
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.960784, 0.486275, 0.0313726, 1 )
 
-[sub_resource type="Curve3D" id=4]
+[sub_resource type="Curve3D" id=5]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 14, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, -15 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
@@ -32,7 +32,7 @@ mob_scene = ExtResource( 3 )
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 collision_layer = 4
-collision_mask = 2147483648
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 1 )
@@ -62,29 +62,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
 [node name="MeshInstance" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15 )
 mesh = SubResource( 3 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 4 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -15 )
 mesh = SubResource( 3 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 4 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 16 )
 mesh = SubResource( 3 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 4 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Cylinders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16 )
 mesh = SubResource( 3 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 4 )
 
 [node name="SpawnPath" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-curve = SubResource( 4 )
+curve = SubResource( 5 )
 
 [node name="SpawnLocation" type="PathFollow" parent="SpawnPath"]
-transform = Transform( -0.424092, 0, -0.90562, 0, 1, 0, 0.90562, 0, -0.424092, -12, 0, -11.9198 )
+transform = Transform( -0.458285, 0, -0.888805, 0, 1, 0, 0.888805, 0, -0.458285, -12.9746, 0, -14.9397 )
 offset = 26.9729
 rotation_mode = 1
 cubic_interp = false
