@@ -20,9 +20,9 @@ func _physics_process(delta):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("move_back"):
 		direction.z += 1
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
 
 	if direction.length() > 0:
@@ -46,9 +46,6 @@ func _physics_process(delta):
 	velocity.y -= fall_acceleration * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-	# This makes the character follow a nice arc when jumping
-	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
-
 	# Here, we check if we landed on top of a mob and if so, we kill it and bounce.
 	# With move_and_slide(), Godot makes the body move sometimes multiple times in a row to
 	# smooth out the character's motion. So we have to loop over all collisions that may have
@@ -61,6 +58,9 @@ func _physics_process(delta):
 			if Vector3.UP.dot(collision.normal) > 0.1:
 				mob.squash()
 				velocity.y = bounce_impulse
+
+	# This makes the character follow a nice arc when jumping
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
 
 func die():
