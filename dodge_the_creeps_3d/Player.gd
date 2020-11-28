@@ -25,7 +25,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
 
-	if direction.length() > 0:
+	if direction != Vector3.ZERO:
 		# In the lines below, we turn the character when moving and make the animation play faster.
 		direction = direction.normalized()
 		$Pivot.look_at(translation + direction, Vector3.UP)
