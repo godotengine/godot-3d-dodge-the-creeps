@@ -58,4 +58,5 @@ aabb = AABB( -1.19986, 0.251327, -1.57098, 2.41047, 1.09305, 3.17223 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "float"
 anims/float = SubResource( 2 )
+
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

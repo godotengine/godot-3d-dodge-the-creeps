@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
-[ext_resource path="res://default_env.tres" type="Environment" id=4]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=6]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
@@ -133,7 +132,5 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 4 )
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
