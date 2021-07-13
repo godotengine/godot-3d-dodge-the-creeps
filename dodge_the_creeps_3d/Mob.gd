@@ -12,6 +12,7 @@ var velocity = Vector3.ZERO
 
 
 func _physics_process(_delta):
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 
