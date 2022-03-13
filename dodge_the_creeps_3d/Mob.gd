@@ -17,8 +17,7 @@ func _physics_process(_delta):
 
 
 func initialize(start_position, player_position):
-	translation = start_position
-	look_at(player_position, Vector3.UP)
+	look_at_from_position(start_position, player_position, Vector3.UP)
 	rotate_y(rand_range(-PI / 4, PI / 4))
 
 	var random_speed = rand_range(min_speed, max_speed)
