@@ -8,7 +8,7 @@ signal squashed
 # Maximum speed of the mob in meters per second.
 @export var max_speed = 18
 
-var velocity = Vector3.ZERO
+#var velocity = Vector3.ZERO
 
 
 func _physics_process(_delta):
@@ -27,7 +27,7 @@ func initialize(start_position, player_position):
 	# We then rotate the vector based on the mob's Y rotation to move in the direction it's looking.
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 
-	$AnimationPlayer.playback_speed = random_speed / min_speed
+	$AnimationPlayer.speed_scale = random_speed / min_speed
 
 
 func squash():

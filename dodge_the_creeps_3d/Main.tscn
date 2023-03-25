@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dgv0tkw0m5ox3"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Player.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://Mob.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://y3n313yta8uq" path="res://Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ctqnsngo6w1ff" path="res://Mob.tscn" id="3"]
 [ext_resource type="Script" path="res://ScoreLabel.gd" id="6"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37114e-08, 14, 0, -15)
+transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37113e-08, 14, 0, -15)
 rotation_mode = 1
 cubic_interp = false
 loop = false
@@ -88,6 +88,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ScoreLabel" type="Label" parent="UserInterface"]
 layout_mode = 0

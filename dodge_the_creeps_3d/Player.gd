@@ -11,7 +11,7 @@ signal hit
 # The downward acceleration when in the air, in meters per second per second.
 @export var fall_acceleration = 75
 
-var velocity = Vector3.ZERO
+#var velocity = Vector3.ZERO
 
 
 func _physics_process(delta):
@@ -29,9 +29,9 @@ func _physics_process(delta):
 		# In the lines below, we turn the character when moving and make the animation play faster.
 		direction = direction.normalized()
 		$Pivot.look_at(position + direction, Vector3.UP)
-		$AnimationPlayer.playback_speed = 4
+		$AnimationPlayer.speed_scale = 4
 	else:
-		$AnimationPlayer.playback_speed = 1
+		$AnimationPlayer.speed_scale = 1
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
@@ -56,9 +56,9 @@ func _physics_process(delta):
 	# If there are no "slides" this frame, the loop below won't run.
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("mob"):
-			var mob = collision.collider
-			if Vector3.UP.dot(collision.normal) > 0.1:
+		if collision.get_collider().is_in_group("mob"):
+			var mob = collision.get_collider()
+			if Vector3.UP.dot(collision.get_normal()) > 0.1:
 				mob.squash()
 				velocity.y = bounce_impulse
 

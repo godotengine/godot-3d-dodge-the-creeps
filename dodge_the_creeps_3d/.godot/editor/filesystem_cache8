@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1679765006
+::res://::1679765651
 icon.png::CompressedTexture2D::281262108852794346::1679763546::1679765006::1::::<><>::
 Main.gd::GDScript::-1::1679764953::0::1::::<>Node<>::
 Main.tscn::PackedScene::7625299461018423730::1679764953::0::1::::<><>::res://Main.gd<>res://Player.tscn<>res://Mob.tscn<>res://ScoreLabel.gd
@@ -10,14 +10,6 @@ Player.gd::GDScript::-1::1679764952::0::1::::<>CharacterBody3D<>::
 Player.tscn::PackedScene::-1::1679764952::0::1::::<><>::res://Player.gd<>res://art/player.glb
 ScoreLabel.gd::GDScript::-1::1679764952::0::1::::<>Label<>::
 ui_theme.tres::Theme::-1::1679764952::0::1::::<><>::res://fonts/Montserrat-Medium.ttf
-::res://addons/::1679765006
-::res://addons/godot-git-plugin/::1679765006
-git_plugin.gdextension::GDExtension::-1::1679765006::0::1::::<><>::
-plugin.cfg::TextFile::-1::1679765006::0::1::::<><>::
-THIRDPARTY.md::TextFile::-1::1679765006::0::1::::<><>::
-::res://addons/godot-git-plugin/linux/::1679765006
-::res://addons/godot-git-plugin/macos/::1679765006
-::res://addons/godot-git-plugin/win64/::1679765006
 ::res://art/::1679764962
 body.tres::StandardMaterial3D::-1::1679764953::0::1::::<><>::
 eye.tres::StandardMaterial3D::-1::1679764953::0::1::::<><>::
@@ -27,6 +19,6 @@ mob_body.tres::StandardMaterial3D::-1::1679764953::0::1::::<><>::
 mob_eye.tres::StandardMaterial3D::-1::1679764953::0::1::::<><>::
 player.glb::PackedScene::7739414666649846782::1679763546::1679764962::1::::<><>::
 pupil.tres::StandardMaterial3D::-1::1679764953::0::1::::<><>::
-::res://fonts/::1679764820
+::res://fonts/::1679765006
 LICENSE.txt::TextFile::-1::1679763546::0::1::::<><>::
 Montserrat-Medium.ttf::FontFile::4635413763755189816::1679763546::1679765006::1::::<><>::
