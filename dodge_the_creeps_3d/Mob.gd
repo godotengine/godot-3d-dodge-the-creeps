@@ -27,7 +27,7 @@ func initialize(start_position, player_position):
 	# We then rotate the vector based on the mob's Y rotation to move in the direction it's looking.
 	target_velocity = target_velocity.rotated(Vector3.UP, rotation.y)
 
-	$AnimationPlayer.playback_speed = random_speed / min_speed
+	$AnimationPlayer.speed_scale = random_speed / min_speed
 
 
 func squash():

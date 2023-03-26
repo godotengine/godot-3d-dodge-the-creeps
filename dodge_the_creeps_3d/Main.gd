@@ -4,7 +4,6 @@ extends Node
 
 
 func _ready():
-	randomize()
 	$UserInterface/Retry.hide()
 
 
