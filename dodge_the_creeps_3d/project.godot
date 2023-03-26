@@ -75,6 +75,4 @@ jump={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
-vram_compression/import_etc=true
-quality/filters/msaa=3
+renderer/rendering_method="mobile"
