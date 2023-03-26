@@ -23,13 +23,13 @@ func _on_MobTimer_timeout():
 	mob_spawn_location.progress_ratio = randf()
 
 	# Communicate the spawn location and the player's location to the mob.
-	var player_position = $Player.transform.origin
+	var player_position = $Player.position
 	mob.initialize(mob_spawn_location.position, player_position)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 	# We connect the mob to the score label to update the score upon squashing a mob.
-	mob.connect("squashed", Callable($UserInterface/ScoreLabel, "_on_Mob_squashed"))
+	mob.squashed.connect($UserInterface/ScoreLabel._on_Mob_squashed)
 
 
 func _on_Player_hit():
