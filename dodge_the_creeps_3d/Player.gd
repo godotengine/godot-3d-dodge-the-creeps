@@ -11,7 +11,7 @@ signal hit
 # The downward acceleration when in the air, in meters per second per second.
 @export var fall_acceleration = 75
 
-var velocity = Vector3.ZERO
+var target_velocity = Vector3.ZERO
 
 
 func _physics_process(delta):
@@ -33,21 +33,19 @@ func _physics_process(delta):
 	else:
 		$AnimationPlayer.playback_speed = 1
 
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
+	target_velocity.x = direction.x * speed
+	target_velocity.z = direction.z * speed
 
 	# Jumping.
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y += jump_impulse
+		target_velocity.y += jump_impulse
 
 	# We apply gravity every frame so the character always collides with the ground when moving.
 	# This is necessary for the is_on_floor() function to work as a body can always detect
 	# the floor, walls, etc. when a collision happens the same frame.
-	velocity.y -= fall_acceleration * delta
-	set_velocity(velocity)
-	set_up_direction(Vector3.UP)
+	target_velocity.y -= fall_acceleration * delta
+	velocity = target_velocity
 	move_and_slide()
-	velocity = velocity
 
 	# Here, we check if we landed on top of a mob and if so, we kill it and bounce.
 	# With move_and_slide(), Godot makes the body move sometimes multiple times in a row to
@@ -67,7 +65,7 @@ func _physics_process(delta):
 
 
 func die():
-	emit_signal("hit")
+	hit.emit()
 	queue_free()
 
 
