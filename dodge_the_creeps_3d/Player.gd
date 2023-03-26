@@ -54,9 +54,9 @@ func _physics_process(delta):
 	# If there are no "slides" this frame, the loop below won't run.
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("mob"):
-			var mob = collision.collider
-			if Vector3.UP.dot(collision.normal) > 0.1:
+		if collision.get_collider().is_in_group("mob"):
+			var mob = collision.get_collider()
+			if Vector3.UP.dot(collision.get_normal()) > 0.1:
 				mob.squash()
 				velocity.y = bounce_impulse
 
