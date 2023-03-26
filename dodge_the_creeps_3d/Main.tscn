@@ -116,4 +116,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Press Enter to retry"
 
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
