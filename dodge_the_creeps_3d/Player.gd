@@ -16,13 +16,13 @@ var target_velocity = Vector3.ZERO
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed(&"move_right"):
 		direction.x += 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed(&"move_left"):
 		direction.x -= 1
-	if Input.is_action_pressed("move_back"):
+	if Input.is_action_pressed(&"move_back"):
 		direction.z += 1
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed(&"move_forward"):
 		direction.z -= 1
 
 	if direction != Vector3.ZERO:
@@ -40,7 +40,7 @@ func _physics_process(delta):
 	# Vertical Velocity
 	if is_on_floor():
 		# Jumping.
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed(&"jump"):
 			target_velocity.y = jump_impulse
 	else: # If in the air, fall towards the floor. Literally gravity
 		# We apply gravity every frame so the character always collides with the ground when moving.
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
 		var collider = collision.get_collider()
-		if collider != null and not collider.is_queued_for_deletion() and collider.is_in_group("mob"):
+		if collider != null and not collider.is_queued_for_deletion() and collider.is_in_group(&"mob"):
 			if Vector3.UP.dot(collision.get_normal()) > 0.1:
 				collider.squash()
 				target_velocity.y = bounce_impulse
