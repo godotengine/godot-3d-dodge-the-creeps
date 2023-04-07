@@ -33,19 +33,20 @@ func _physics_process(delta):
 	else:
 		$AnimationPlayer.speed_scale = 1
 
+	# Ground Velocity
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 
-	# Jumping.
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		target_velocity.y += jump_impulse
-
-	# We apply gravity every frame so the character always collides with the ground when moving.
-	# This is necessary for the is_on_floor() function to work as a body can always detect
-	# the floor, walls, etc. when a collision happens the same frame.
-	target_velocity.y -= fall_acceleration * delta
-	velocity = target_velocity
-	move_and_slide()
+	# Vertical Velocity
+	if is_on_floor():
+		# Jumping.
+		if Input.is_action_just_pressed("jump"):
+			target_velocity.y = jump_impulse
+	else: # If in the air, fall towards the floor. Literally gravity
+		# We apply gravity every frame so the character always collides with the ground when moving.
+		# This is necessary for the is_on_floor() function to work as a body can always detect
+		# the floor, walls, etc. when a collision happens the same frame.
+		target_velocity.y -= fall_acceleration * delta
 
 	# Here, we check if we landed on top of a mob and if so, we kill it and bounce.
 	# With move_and_slide(), Godot makes the body move sometimes multiple times in a row to
@@ -58,8 +59,11 @@ func _physics_process(delta):
 			var mob = collision.get_collider()
 			if Vector3.UP.dot(collision.get_normal()) > 0.1:
 				mob.squash()
-				velocity.y = bounce_impulse
+				target_velocity.y = bounce_impulse
 
+	# Moving the Character
+	velocity = target_velocity
+	move_and_slide()
 	# This makes the character follow a nice arc when jumping
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
