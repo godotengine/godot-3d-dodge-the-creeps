@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://be8acymrxxvwt"]
+[gd_scene load_steps=10 format=3 uid="uid://cdlnw5k212tho"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://ca8th1qmp8p8j" path="res://Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://b6s1y3jvey05t" path="res://Mob.tscn" id="3"]
-[ext_resource type="Script" path="res://ScoreLabel.gd" id="6"]
-[ext_resource type="Theme" uid="uid://cgjva6jwladex" path="res://ui_theme.tres" id="7"]
+[ext_resource type="Script" path="res://main.gd" id="1_wgapt"]
+[ext_resource type="PackedScene" path="res://mob.tscn" id="2_rp1hb"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="3_udywf"]
+[ext_resource type="Theme" uid="uid://cgjva6jwladex" path="res://ui_theme.tres" id="4_eit56"]
+[ext_resource type="Script" path="res://score_label.gd" id="5_5ywvx"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(30, 1, 30)
@@ -22,8 +22,8 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node"]
-script = ExtResource("1")
-mob_scene = ExtResource("3")
+script = ExtResource("1_wgapt")
+mob_scene = ExtResource("2_rp1hb")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -40,7 +40,7 @@ mesh = SubResource("2")
 transform = Transform3D(0.5, -0.777049, 0.382355, 0, 0.441506, 0.897258, -0.866025, -0.448629, 0.220753, 0, 12.5592, 14.7757)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Player" parent="." instance=ExtResource("3_udywf")]
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.183514, 0, 0)
@@ -91,7 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("7")
+theme = ExtResource("4_eit56")
 
 [node name="ScoreLabel" type="Label" parent="UserInterface"]
 layout_mode = 0
@@ -101,7 +101,7 @@ offset_right = 126.023
 offset_bottom = 71.0181
 theme_override_colors/font_color = Color(0.2, 0.184314, 0.215686, 1)
 text = "Score: 0"
-script = ExtResource("6")
+script = ExtResource("5_5ywvx")
 
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 layout_mode = 1
