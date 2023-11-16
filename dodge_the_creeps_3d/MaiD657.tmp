@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba5y0wcff6w2b"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Mob.tscn" id="3"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="6"]
+[ext_resource type="Theme" uid="uid://7uiay30um5n4" path="res://ui_theme.tres" id="7"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="2"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="CylinderMesh" id="3"]
+
+[sub_resource type="Curve3D" id="5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, -15),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+mob_scene = ExtResource("3")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.777049, 0.382355, 0, 0.441506, 0.897258, -0.866025, -0.448629, 0.220753, 0, 12.5592, 14.7757)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.183514, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 9.53674e-07, 19)
+projection = 1
+fov = 48.6
+size = 19.0
+
+[node name="Cylinders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15)
+mesh = SubResource("3")
+
+[node name="MeshInstance3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -15)
+mesh = SubResource("3")
+
+[node name="MeshInstance2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 16)
+mesh = SubResource("3")
+
+[node name="MeshInstance4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16)
+mesh = SubResource("3")
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("5")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 14, 0, -15)
+rotation_mode = 1
+cubic_interp = false
+loop = false
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("7")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 20.0226
+offset_top = 16.0181
+offset_right = 126.023
+offset_bottom = 71.0181
+theme_override_colors/font_color = Color(0.2, 0.184314, 0.215686, 1)
+text = "Score: 0"
+script = ExtResource("6")
+
+[node name="Retry" type="ColorRect" parent="UserInterface"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.447059)
+
+[node name="Label" type="Label" parent="UserInterface/Retry"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Press Enter to retry"
+
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
