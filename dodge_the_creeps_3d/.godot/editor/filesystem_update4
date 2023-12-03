@@ -1,0 +1,8 @@
+res://Main.tscn
+res://ui_theme.tres
+res://Mob.tscn
+res://Player.tscn
+res://Player.gd
+res://Mob.gd
+res://Main.gd
+res://MusicPlayer.tscn
