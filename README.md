@@ -1,3 +1,9 @@
+## Archived
+
+**This demo project was merged into the main [godot-demo-projects](https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash_the_creeps) repository.**
+
+---
+
 # Your First 3D Game: Squash the creeps 3D
 
 ![Squash the creeps banner](images/3d-game-banner.png)
